@@ -1,5 +1,7 @@
 # Website Nhóm 2 – 26C01 – Kỹ năng mềm
 
+**Link website:** https://khangnguyen196.github.io/nhom2-26c01/
+
 Website tĩnh (HTML/CSS/JS), không cần cài đặt gì. Mở `index.html` bằng trình duyệt là xem được.
 
 ## Cấu trúc
