@@ -1,0 +1,6 @@
+# Không đưa lên web: tài liệu gốc có thông tin cá nhân
+*.docx
+Nhom2_BB*.pdf
+
+# Cấu hình công cụ cục bộ
+.claude/

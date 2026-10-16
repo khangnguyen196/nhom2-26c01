@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Logo Nhóm 2">
+  <circle cx="60" cy="60" r="56" fill="#1E4FA3"/>
+  <circle cx="60" cy="60" r="48" fill="none" stroke="#F5B700" stroke-width="4"/>
+  <text x="60" y="76" text-anchor="middle" font-family="Arial, sans-serif" font-size="44" font-weight="700" fill="#ffffff">N<tspan fill="#F5B700">2</tspan></text>
+</svg>
