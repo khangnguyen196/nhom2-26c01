@@ -1,0 +1,2 @@
+# PDF là file nhị phân: không so sánh/grep như văn bản
+*.pdf binary

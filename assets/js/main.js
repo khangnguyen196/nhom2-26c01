@@ -231,14 +231,25 @@
         return "<tr><td><strong>" + esc(c.name) + "</strong></td><td>" + esc(c.desc) + "</td><td>" + esc(c.weight) + "</td></tr>";
       }).join("") + "</tbody></table></div></section>";
     var commit = R.commitment ? '<section class="card"><h2>Cam kết</h2><p>' + esc(R.commitment) + "</p></section>" : "";
-    var contract = '<section><h2>Hợp đồng thành lập nhóm</h2>' +
-      (R.contract
-        ? (isPdf(R.contract)
-          ? '<div class="embed embed-tall"><iframe src="' + esc(R.contract) + '" title="Hợp đồng nhóm"></iframe></div>' +
-            '<p><a href="' + esc(R.contract) + '" target="_blank" rel="noopener">Mở hợp đồng trong tab mới</a></p>'
-          : '<img src="' + esc(R.contract) + '" alt="Hợp đồng nhóm có chữ ký" style="border-radius:14px">')
-        : emptyBox("Bản hợp đồng có chữ ký sẽ được đăng tại đây (đã che số điện thoại).")) +
-      "</section>";
+    var pdfLink = R.contract
+      ? '<p><a class="btn" href="' + esc(R.contract) + '" target="_blank" rel="noopener">Mở / tải bản PDF</a></p>' : "";
+    var contractBody;
+    if (R.contractImages && R.contractImages.length) {
+      contractBody = '<div class="contract-pages">' + R.contractImages.map(function (src, i) {
+        return '<a href="' + esc(src) + '" target="_blank" rel="noopener" title="Xem trang ' + (i + 1) + ' cỡ lớn">' +
+          '<img src="' + esc(src) + '" alt="Hợp đồng thành lập nhóm – trang ' + (i + 1) + '" loading="lazy"></a>';
+      }).join("") + "</div>" + pdfLink;
+    } else if (R.contract) {
+      contractBody = isPdf(R.contract)
+        ? '<div class="embed embed-tall"><iframe src="' + esc(R.contract) + '" title="Hợp đồng nhóm"></iframe></div>' + pdfLink
+        : '<img src="' + esc(R.contract) + '" alt="Hợp đồng nhóm có chữ ký" style="border-radius:14px">';
+    } else {
+      contractBody = emptyBox("Bản hợp đồng có chữ ký sẽ được đăng tại đây (đã che số điện thoại).");
+    }
+    var contract = "<section><h2>Hợp đồng thành lập nhóm</h2>" +
+      (R.contract || (R.contractImages && R.contractImages.length)
+        ? '<p class="placeholder">Bản có chữ ký của 5 thành viên; số điện thoại và email đã được che.</p>' : "") +
+      contractBody + "</section>";
     return pageHead("Nội quy nhóm", "Hợp đồng thành lập nhóm: nguyên tắc làm việc, kế hoạch giao tiếp, thưởng phạt và tiêu chí đánh giá.") +
       wrap(goal + principles + comm + rp + crit + commit + contract);
   }
@@ -254,13 +265,20 @@
     var mindmap = "<section><h2>Sơ đồ tư duy</h2>" +
       (P.mindmap ? '<img src="' + esc(P.mindmap) + '" alt="Sơ đồ tư duy đề án" style="border-radius:14px;background:#fff">'
         : emptyBox("Sơ đồ tư duy sẽ được đăng sau khi nhóm chốt ý tưởng.")) + "</section>";
-    var plan = '<section><h2>Bảng kế hoạch và tiến độ</h2><div class="table-wrap"><table class="data-table">' +
-      "<thead><tr><th>Tuần</th><th>Công việc</th><th>Người thực hiện</th><th>Tiến độ</th></tr></thead><tbody>" +
-      P.plan.map(function (r) {
-        return "<tr><td>" + esc(r.week) + "</td><td>" + esc(r.task) + "</td><td>" + esc(r.owner) + "</td><td>" + text(r.status) + "</td></tr>";
-      }).join("") + "</tbody></table></div></section>";
+    function planTable(rows) {
+      return '<div class="table-wrap"><table class="data-table">' +
+        "<thead><tr><th>Tuần</th><th>Công việc</th><th>Người thực hiện</th><th>Tiến độ</th></tr></thead><tbody>" +
+        rows.map(function (r) {
+          return "<tr><td>" + esc(r.week) + "</td><td>" + esc(r.task) + "</td><td>" + esc(r.owner) + "</td><td>" + text(r.status) + "</td></tr>";
+        }).join("") + "</tbody></table></div>";
+    }
+    var plan = "<section><h2>Bảng kế hoạch và tiến độ thực hiện đồ án</h2>" +
+      (P.plan && P.plan.length ? planTable(P.plan) : emptyBox("Bảng kế hoạch đồ án sẽ được đăng sau khi nhóm chốt ý tưởng và kế hoạch.")) +
+      "</section>";
+    var webPlan = P.websitePlan && P.websitePlan.length
+      ? "<section><h2>Kế hoạch xây dựng website</h2>" + planTable(P.websitePlan) + "</section>" : "";
     return pageHead("Đề án", "Ý tưởng, sơ đồ tư duy, thông điệp và kế hoạch thực hiện đồ án cuối kỳ.") +
-      wrap(overview + mindmap + plan);
+      wrap(overview + mindmap + plan + webPlan);
   }
 
   /* ---------- Sản phẩm ---------- */
@@ -286,8 +304,8 @@
     var D = S.documents;
     var drive = '<section class="card"><h2>Thư mục Google Drive chung</h2>' +
       (D.drive ? '<p><a class="btn" href="' + esc(D.drive) + '" target="_blank" rel="noopener">Mở thư mục Drive của nhóm</a></p>'
-        : "<p>" + PENDING + "</p>") +
-      '<p class="placeholder">Thư mục đã chia sẻ quyền xem cho giảng viên.</p></section>';
+          + '<p class="placeholder">Thư mục đã chia sẻ quyền xem cho giảng viên.</p>'
+        : "<p>" + PENDING + "</p>") + "</section>";
     var minutes = D.minutes.slice().sort(function (a, b) { return a.date < b.date ? 1 : -1; });
     var mins = '<section><h2>Biên bản họp nhóm</h2>' +
       (minutes.length ? '<div class="table-wrap"><table class="data-table"><thead><tr><th>Ngày</th><th>Biên bản</th></tr></thead><tbody>' +

@@ -38,7 +38,7 @@ window.SITE = {
       name: "Nguyễn Đoàn Ngọc Khang",
       mssv: "26127201",
       role: "Ý tưởng, kế hoạch, website nhóm",
-      tasks: ["Đề xuất ý tưởng đề án", "Lập kế hoạch thực hiện", "Xây dựng và cập nhật website nhóm"],
+      tasks: ["Ý tưởng đồ án", "Kế hoạch thực hiện", "Website nhóm: dựng khung, đăng nội dung Đề án, Hoạt động, Tài liệu, Sản phẩm"],
       photo: "assets/img/members/khang.svg",
       bio: "",
       contributions: [],
@@ -50,7 +50,7 @@ window.SITE = {
       name: "Trương Chí Thành",
       mssv: "26127428",
       role: "Video (kịch bản, quay, dựng)",
-      tasks: ["Viết kịch bản video", "Quay video", "Dựng và hoàn thiện video"],
+      tasks: ["Video: kịch bản, quay, dựng", "Gửi link video cho trang Sản phẩm (tuần 8)"],
       photo: "assets/img/members/thanh.svg",
       bio: "",
       contributions: [],
@@ -62,7 +62,7 @@ window.SITE = {
       name: "Nguyễn Phạm Hoài Niệm",
       mssv: "26127345",
       role: "Slide",
-      tasks: ["Thiết kế slide trình bày", "Hỗ trợ chuẩn bị nội dung thuyết trình"],
+      tasks: ["Slide trình bày", "Gửi slide cho trang Sản phẩm (tuần 8)"],
       photo: "assets/img/members/niem.svg",
       bio: "",
       contributions: [],
@@ -74,7 +74,7 @@ window.SITE = {
       name: "Nguyễn Lê Duy An",
       mssv: "26127005",
       role: "Poster",
-      tasks: ["Thiết kế poster", "Thiết kế logo nhóm"],
+      tasks: ["Poster", "Gửi logo nhóm cho website (tuần 1)", "Gửi poster cho trang Sản phẩm (tuần 8)"],
       photo: "assets/img/members/an.svg",
       bio: "",
       contributions: [],
@@ -86,7 +86,7 @@ window.SITE = {
       name: "Đỗ Cao Khánh Băng",
       mssv: "26127034",
       role: "Báo cáo tiến độ",
-      tasks: ["Tổng hợp báo cáo tiến độ", "Ghi biên bản họp", "Gửi ảnh và tóm tắt hoạt động cho website"],
+      tasks: ["Báo cáo tiến độ", "Gửi ảnh và tóm tắt tiến độ sau mỗi buổi họp cho trang Hoạt động"],
       photo: "assets/img/members/bang.svg",
       bio: "",
       contributions: [],
@@ -101,17 +101,16 @@ window.SITE = {
    * type: "Họp nhóm" | "Thực hành trên lớp" | "Khảo sát" | "Quay video" | ...
    */
   activities: [
-    {
-      date: "2026-10-16",
-      week: 1,
-      type: "Họp nhóm",
-      title: "Buổi họp đầu tiên – thành lập nhóm (bài mẫu)",
-      summary:
-        "Bài mẫu: nhóm làm quen, thống nhất phân công vai trò, chọn công cụ làm website và " +
-        "bắt đầu soạn hợp đồng nhóm. Thay nội dung này bằng tóm tắt từ biên bản họp thật.",
-      results: ["Chốt vai trò chính của 5 thành viên", "Thống nhất kênh liên lạc và lịch họp", "Phân công gửi tư liệu cho website"],
-      photos: [] // ví dụ: ["assets/img/activities/tuan1-1.jpg", "assets/img/activities/tuan1-2.jpg"]
-    }
+    // Chưa có bài: chờ biên bản + ảnh từ Băng. Chép khối mẫu dưới đây (bỏ dấu //) khi có buổi họp thật.
+    // {
+    //   date: "2026-10-18",            // ngày họp thật, dạng năm-tháng-ngày
+    //   week: 1,
+    //   type: "Họp nhóm",
+    //   title: "Tiêu đề buổi họp",
+    //   summary: "Tóm tắt nội dung chính từ biên bản họp.",
+    //   results: ["Kết quả 1", "Kết quả 2"],
+    //   photos: ["assets/img/activities/tuan1-1.jpg", "assets/img/activities/tuan1-2.jpg"]
+    // }
   ],
 
   /* ---------- Nội quy nhóm ---------- */
@@ -162,10 +161,14 @@ window.SITE = {
       { name: "Tính chủ động", desc: "Tự đề xuất ý tưởng, nhận việc", weight: "10%" }
     ],
     commitment: "Các thành viên đã đọc, thống nhất và cam kết thực hiện đúng các điều khoản trên từ ngày ký đến khi kết thúc môn học. Mọi thay đổi phải được đa số thành viên đồng ý và ghi vào biên bản họp.",
-    // Bản hợp đồng có chữ ký ĐÃ CHE SỐ ĐIỆN THOẠI (và email nếu chưa được đồng ý),
-    // ví dụ "assets/docs/hop-dong-nhom.pdf" hoặc ảnh "assets/docs/hop-dong-nhom.jpg".
-    // KHÔNG dùng trực tiếp file gốc vì có số điện thoại cá nhân.
-    contract: ""
+    // Bản hợp đồng có chữ ký ĐÃ CHE số điện thoại và email (tạo từ file gốc, file gốc KHÔNG đưa lên).
+    contract: "assets/docs/hop-dong-nhom.pdf",
+    contractImages: [
+      "assets/docs/hop-dong-nhom-1.jpg",
+      "assets/docs/hop-dong-nhom-2.jpg",
+      "assets/docs/hop-dong-nhom-3.jpg",
+      "assets/docs/hop-dong-nhom-4.jpg"
+    ]
   },
 
   /* ---------- Đề án ---------- */
@@ -175,12 +178,16 @@ window.SITE = {
     idea: "",     // Ý tưởng sản phẩm
     message: "",  // Thông điệp của nhóm
     mindmap: "",  // Ảnh sơ đồ tư duy, ví dụ "assets/img/so-do-tu-duy.png"
-    plan: [
-      { week: "1", task: "Chọn công cụ, dựng khung 7 trang, Trang chủ, Nội quy nhóm, gắn logo", owner: "Khang; An gửi logo", status: "Đang làm" },
-      { week: "1–2", task: "Thu thập ảnh và giới thiệu của từng người, làm trang Thành viên", owner: "Khang; mọi thành viên gửi tư liệu", status: "Chưa bắt đầu" },
-      { week: "3", task: "Đăng nội dung trang Đề án sau khi chốt ý tưởng và kế hoạch", owner: "Khang", status: "Chưa bắt đầu" },
-      { week: "Hằng tuần", task: "Đăng bài Hoạt động sau mỗi buổi họp, cập nhật trang Tài liệu", owner: "Khang; Băng gửi ảnh và tóm tắt tiến độ", status: "Đang làm" },
-      { week: "8", task: "Đăng video, poster, slide lên trang Sản phẩm; kiểm tra toàn bộ website", owner: "Khang; Thành, An, Niệm gửi sản phẩm", status: "Chưa bắt đầu" }
+    // Bảng kế hoạch và tiến độ thực hiện ĐỒ ÁN – chờ Khang chốt (tuần 3).
+    // Mẫu: { week: "3", task: "Chốt ý tưởng", owner: "Cả nhóm", status: "Đã xong" }
+    plan: [],
+    // Kế hoạch xây dựng website (mục 7 file yêu cầu). Cập nhật cột status khi có thay đổi.
+    websitePlan: [
+      { week: "1", task: "Chọn công cụ, dựng khung 7 trang, Trang chủ, Nội quy nhóm, gắn logo", owner: "Khang; An gửi logo", status: "Đã xong khung; chờ logo thật" },
+      { week: "1–2", task: "Thu thập ảnh và giới thiệu của từng người, làm trang Thành viên", owner: "Khang; mọi thành viên gửi tư liệu", status: "Đã dựng trang; chờ ảnh và giới thiệu" },
+      { week: "3", task: "Đăng nội dung trang Đề án sau khi chốt ý tưởng và kế hoạch", owner: "Khang", status: "Chờ chốt ý tưởng" },
+      { week: "Hằng tuần", task: "Đăng bài Hoạt động sau mỗi buổi họp, cập nhật trang Tài liệu", owner: "Khang; Băng gửi ảnh và tóm tắt tiến độ", status: "Chờ biên bản và ảnh" },
+      { week: "8", task: "Đăng video, poster, slide lên trang Sản phẩm; kiểm tra toàn bộ website", owner: "Khang; Thành gửi link video, An gửi poster, Niệm gửi slide", status: "Chưa đến hạn" }
     ]
   },
 

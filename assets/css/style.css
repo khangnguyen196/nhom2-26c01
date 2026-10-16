@@ -197,6 +197,8 @@ section + section { margin-top: 40px; }
   display: flex; align-items: center; justify-content: center; font-weight: 700;
 }
 .rules strong { display: block; color: var(--blue-dark); }
+.contract-pages { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); margin-bottom: 16px; }
+.contract-pages img { width: 100%; aspect-ratio: 910 / 1287; object-fit: contain; background: #fff; border: 1px solid var(--line); border-radius: 10px; box-shadow: var(--shadow); }
 
 /* ===== Footer ===== */
 .site-footer { background: var(--blue-dark); color: #fff; padding: 24px 0; text-align: center; font-size: .95rem; }
