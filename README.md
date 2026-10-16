@@ -33,10 +33,10 @@ Email chỉ hiện khi điền `email` **và** đặt `showEmail: true` (khi th�
 
 **Đăng bài Hoạt động sau mỗi buổi họp:** trong `activities`, chép một khối `{ ... }`, sửa ngày (`"2026-10-23"`), tuần, loại,
 tiêu đề, tóm tắt, kết quả và ảnh (`photos: ["assets/img/activities/tuan2-1.jpg"]`). Bài mới tự lên đầu.
-Xóa bài mẫu tuần 1 khi đã có bài thật.
+Khối mẫu nằm sẵn (dạng comment) trong `activities` của `data.js`.
 
 **Hợp đồng nhóm:** file gốc `Nhom2_BB THANH LAP NHOM (2).pdf` có **số điện thoại và email** — không đăng trực tiếp.
-Xuất một bản đã che các thông tin đó, lưu vào `assets/docs/hop-dong-nhom.pdf`, rồi điền `rules.contract`.
+Bản đã che sẵn: `assets/docs/hop-dong-nhom.pdf` và 4 ảnh `hop-dong-nhom-1..4.jpg` (khai báo ở `rules.contract`, `rules.contractImages`).
 
 **Sản phẩm (tuần 8):** dán link YouTube vào `products.youtube`, ảnh poster vào `products.poster`,
 link Google Slides (Tệp → Chia sẻ → Xuất bản lên web) vào `products.slides`.
