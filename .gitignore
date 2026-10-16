@@ -2,5 +2,6 @@
 *.docx
 Nhom2_BB*.pdf
 
-# Cấu hình công cụ cục bộ
+# Cấu hình công cụ cục bộ, ghi chú cho Claude
 .claude/
+CLAUDE.md
